@@ -10,7 +10,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.RoundingMode;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,6 +68,9 @@ public class PanelBarcoFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
+        DecimalFormat df = new DecimalFormat("#.#####");
+        df.setRoundingMode(RoundingMode.CEILING);
+        
         //Cargar Fichero automaticamente
         model = Model.getInstance();
         try {
@@ -105,22 +110,28 @@ public class PanelBarcoFXMLController implements Initializable {
         //GPS (Latitud y longitud)
         model.GPSProperty().addListener((observable, oldValue, newValue)-> {
             Platform.runLater(() -> {
-                textoLongitud.setText(String.valueOf(newValue.getLongitude()) + " " + newValue.getLongitudeHemisphere());
-                textoLatitud.setText(String.valueOf(newValue.getLatitude()) + " " + newValue.getLatitudeHemisphere());
+                textoLongitud.setText(String.valueOf(df.format(newValue.getLongitude())) + " " + newValue.getLongitudeHemisphere());
+                textoLatitud.setText(String.valueOf(df.format(newValue.getLatitude())) + " " + newValue.getLatitudeHemisphere());
             });
         });
         
         //PITCH y ROLL
         
         //COG
-        model.GPSProperty().addListener((observable, oldValue, newValue)-> {
+        model.COGProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + "º";
             Platform.runLater(() -> {
-                textoLongitud.setText(String.valueOf(newValue.getLongitude()) + " " + newValue.getLongitudeHemisphere());
-                textoLatitud.setText(String.valueOf(newValue.getLatitude()) + " " + newValue.getLatitudeHemisphere());
+                labelCOG.setText(dat);
             });
         });
         
         //SOG
+        model.SOGProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + "Kn";
+            Platform.runLater(() -> {
+                labelSOG.setText(dat);
+            });
+        });
         
         
     }    
