@@ -85,7 +85,7 @@ public class PanelBarcoFXMLController implements Initializable {
         });
         
         model.TWSProperty().addListener((observable, oldValue, newValue)-> {
-            String dat = String.valueOf(newValue) + "Km";
+            String dat = String.valueOf(newValue) + "Kn";
             Platform.runLater(() -> {
                 labelTWS.setText(dat);
             });
@@ -101,6 +101,16 @@ public class PanelBarcoFXMLController implements Initializable {
         });
         
         //PITCH y ROLL
+        
+        //COG
+        model.GPSProperty().addListener((observable, oldValue, newValue)-> {
+            Platform.runLater(() -> {
+                textoLongitud.setText(String.valueOf(newValue.getLongitude()) + " " + newValue.getLongitudeHemisphere());
+                textoLatitud.setText(String.valueOf(newValue.getLatitude()) + " " + newValue.getLatitudeHemisphere());
+            });
+        });
+        
+        //SOG
         
         
     }    

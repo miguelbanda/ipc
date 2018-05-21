@@ -1,0 +1,23 @@
+ENTREGA 2
+
+DIRECCION
+//-Heading(HDG): Rumbo Magnético.
+-Course Over Ground(COG): Rumbo de embarcación obtenida por GPS.
+-Speed Over Ground(SOG): Velocidad de embarcación por GPS.
+//-Latitud(LAT): Latitud por GPS.
+//-Longitud(LON): Longitud por GPS.
+
+VIENTO
+//-True Wind Direction(TWD): Direccion Real del viento
+//-True Wind Speed(TWS): Velocidad del viento.
+-Temperatura(TEMP): Temperatura del viento.
+-Apparent Wind Angle(AWA): Ángulo aparente del viento.
+-Apparent Wind Speed(AWS): Velocidad del viento medida en el barco.
+
+BARCO
+-Pitch(PITCH): Inclinación longitudinal de embarcación en grados.
+-Roll(ROLL): Inclinación transversal del embarcación en grados.
+-Course Over Ground(COG): Rumbo de embarcación obtenida por GPS
+-Speed Over Ground(SOG): Velocidad de embarcación por GPS.
+//-Latitud(LAT): Latitud por GPS.
+//-Longitud(LON): Longitud por GPS.
