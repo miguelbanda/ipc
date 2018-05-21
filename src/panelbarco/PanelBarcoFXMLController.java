@@ -100,7 +100,7 @@ public class PanelBarcoFXMLController implements Initializable {
         });
         
         model.TWSProperty().addListener((observable, oldValue, newValue)-> {
-            String dat = String.valueOf(newValue) + "Kn";
+            String dat = String.valueOf(newValue) + " Kn";
             Platform.runLater(() -> {
                 labelTWS.setText(dat);
             });
@@ -127,7 +127,7 @@ public class PanelBarcoFXMLController implements Initializable {
         
         //SOG
         model.SOGProperty().addListener((observable, oldValue, newValue)-> {
-            String dat = String.valueOf(newValue) + "Kn";
+            String dat = String.valueOf(newValue) + " Kn";
             Platform.runLater(() -> {
                 labelSOG.setText(dat);
             });

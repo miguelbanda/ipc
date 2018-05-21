@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -40,7 +41,7 @@
                                           <Insets top="30.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="textoLatitud" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="LATº" textAlignment="CENTER" VBox.vgrow="NEVER">
+                                    <Label alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="LATº" textAlignment="CENTER" VBox.vgrow="NEVER">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -53,7 +54,7 @@
                                           <Font name="System Bold" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="textoLongitud" alignment="CENTER" prefHeight="37.0" prefWidth="405.0" text="LONº">
+                                    <Label alignment="CENTER" prefHeight="37.0" prefWidth="405.0" text="LONº">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
@@ -73,7 +74,7 @@
                                           <Insets bottom="10.0" top="50.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="labelHDG" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="PITCH" textAlignment="CENTER" VBox.vgrow="NEVER">
+                                    <Label alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="PITCH" textAlignment="CENTER" VBox.vgrow="NEVER">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>
@@ -154,7 +155,7 @@
                                           <Insets top="30.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="textoLatitud1" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="LATº" textAlignment="CENTER" VBox.vgrow="NEVER">
+                                    <Label fx:id="textoLatitud" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="LATº" textAlignment="CENTER" VBox.vgrow="NEVER">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
@@ -167,7 +168,7 @@
                                           <Font name="System Bold" size="24.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="textoLongitud1" alignment="CENTER" prefHeight="37.0" prefWidth="405.0" text="LONº">
+                                    <Label fx:id="textoLongitud" alignment="CENTER" prefHeight="37.0" prefWidth="405.0" text="LONº">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
@@ -187,7 +188,7 @@
                                           <Insets bottom="10.0" top="50.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="labelHDG1" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="PITCH" textAlignment="CENTER" VBox.vgrow="NEVER">
+                                    <Label fx:id="labelHDG" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="PITCH" textAlignment="CENTER" VBox.vgrow="NEVER">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>
@@ -207,7 +208,7 @@
                                           <Insets bottom="10.0" top="50.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <Label fx:id="labelSOG" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="ROLL" textAlignment="CENTER" VBox.vgrow="NEVER">
+                                    <Label fx:id="labelSOG" alignment="CENTER" maxHeight="40.0" maxWidth="404.0" minHeight="40.0" minWidth="200.0" prefHeight="40.0" prefWidth="404.0" text="0.0 Kn" textAlignment="CENTER" VBox.vgrow="NEVER">
                                        <font>
                                           <Font name="System Bold" size="36.0" />
                                        </font>
@@ -306,5 +307,10 @@
             </Tab>
         </tabs>
       </TabPane>
+      <CheckBox alignment="CENTER" layoutX="650.0" layoutY="25.0" mnemonicParsing="false" text="MODO NOCTURNO">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>
