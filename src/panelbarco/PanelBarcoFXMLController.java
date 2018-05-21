@@ -52,6 +52,16 @@ public class PanelBarcoFXMLController implements Initializable {
     private Label labelTWD;
     @FXML
     private Label labelTWS;
+    @FXML
+    private Label textoLatitud11;
+    @FXML
+    private Label textoLongitud11;
+    @FXML
+    private Label labelHDG_;
+    @FXML
+    private Label labelSOG;
+    @FXML
+    private Label labelCOG;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
