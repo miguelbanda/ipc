@@ -1,23 +1,19 @@
-ENTREGA 2
++HDG: (Heading) rumbo magnético. Es el ángulo que formar el eje longitudinal de la embarcación respecto al norte, y se conoce como la trayectoria que sigue la embarcación. Se mide en grados de 0º a 360º y el sentido de giro es el horario.
++TWD: (True Wind Direction) dirección real de viento. Se mide en grados de 0º a 360º en sentido horario e indica de donde viene el viento.
++TWS: (True Wind Speed) velocidad del viento. Se puede mostrar en nudos (millas/hora) o en km/h
++TEMP: temperatura, se mide en grados celsius.
++AWA: (Apparent Wind Angle) ángulo aparente del viento. Este es el ángulo del viento medido en el barco, se mide en grados de 0º a 360º contados a partir del eje longitudinal de la embarcación..
++AWS: (Apparent Wind Speed) es la velocidad del viento medida en el barco.
++PITCH: es la inclinación longitudinal de la embarcación y se mide en grados.
++ROLL: es la inclinación transversal de la embarcación y se mide en grados.
++LAT: es la latitud obtenida por el GPS.
++LON: es la longitud obtenida por el GPS.
++COG: (Course Over Ground) es el rumbo de la embarcación obtenida por el GPS, similar al HEADING.
++SOG: (Speed Over Ground) es la velocidad de la embarcación obtenida por el GPS.
 
-DIRECCION
-//-Heading(HDG): Rumbo Magnético.
--Course Over Ground(COG): Rumbo de embarcación obtenida por GPS.
--Speed Over Ground(SOG): Velocidad de embarcación por GPS.
-//-Latitud(LAT): Latitud por GPS.
-//-Longitud(LON): Longitud por GPS.
+GRAFICAS: TWD y TWS.
 
-VIENTO
-//-True Wind Direction(TWD): Direccion Real del viento
-//-True Wind Speed(TWS): Velocidad del viento.
--Temperatura(TEMP): Temperatura del viento.
--Apparent Wind Angle(AWA): Ángulo aparente del viento.
--Apparent Wind Speed(AWS): Velocidad del viento medida en el barco.
-
-BARCO
--Pitch(PITCH): Inclinación longitudinal de embarcación en grados.
--Roll(ROLL): Inclinación transversal del embarcación en grados.
--Course Over Ground(COG): Rumbo de embarcación obtenida por GPS
--Speed Over Ground(SOG): Velocidad de embarcación por GPS.
-//-Latitud(LAT): Latitud por GPS.
-//-Longitud(LON): Longitud por GPS.
+PESTAÑAS:
+VIENTO: TWD, TWS, AWS, AWA.
+EMBARCACION: HDG, PITCH, ROLL, TEMP.
+GPS: SOG, COG, LAT, LON.
