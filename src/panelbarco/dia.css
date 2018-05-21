@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 21, 2018, 6:19:33 PM
+    Author     : miguelbanda
+*/
+
+.root {
+    -fx-background-color: #F7F7F7;
+    -fx-text-fill: #293042;
+}
+
+.tab {
+	-fx-background-color: #F7F7F7;
+	-fx-text-fill: #293042;
+}
+
+.label {
+	-fx-text-fill: #293042;
+}
+
+.tabpane {
+	-fx-background-color: #F7F7F7;
+}
+
+.checkbox {
+	-fx-text-fill: #293042;
+}

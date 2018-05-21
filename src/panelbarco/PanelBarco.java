@@ -23,7 +23,7 @@ public class PanelBarco extends Application {
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
-        //scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(PanelBarco.class.getResource("dia.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

@@ -24,6 +24,7 @@ import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -33,6 +34,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
+import javafx.stage.Stage;
 import net.sf.marineapi.nmea.event.AbstractSentenceListener;
 import net.sf.marineapi.nmea.io.SentenceReader;
 import net.sf.marineapi.nmea.sentence.HDGSentence;
@@ -92,7 +94,7 @@ public class PanelBarcoFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        cambiarADia();
+        //cambiarADia();
         
         DecimalFormat df = new DecimalFormat("#.#####");
         df.setRoundingMode(RoundingMode.CEILING);
@@ -211,9 +213,11 @@ public class PanelBarcoFXMLController implements Initializable {
     @FXML
     private void modoNocturno(ActionEvent event) {
         if (!checkNocturno.isSelected()) {
-            cambiarADia();
+            root.getStylesheets().clear();
+            root.getStylesheets().add(PanelBarco.class.getResource("dia.css").toExternalForm());
         } else {
-            cambiarANoche();
+            root.getStylesheets().clear();
+            root.getStylesheets().add(PanelBarco.class.getResource("noche.css").toExternalForm());
         }
     }
     
