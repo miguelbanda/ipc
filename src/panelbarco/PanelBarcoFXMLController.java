@@ -26,7 +26,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import net.sf.marineapi.nmea.event.AbstractSentenceListener;
@@ -68,9 +72,26 @@ public class PanelBarcoFXMLController implements Initializable {
     private Label labelAWS;
     @FXML
     private Label labelTEMP;
+    private CheckBox checkNocturno;
+    @FXML
+    private AnchorPane root;
+    @FXML
+    private Tab tab1;
+    @FXML
+    private GridPane grid1;
+    @FXML
+    private Tab tab2;
+    @FXML
+    private GridPane grid2;
+    @FXML
+    private Tab tab3;
+    @FXML
+    private GridPane grid3;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        cambiarADia();
         
         DecimalFormat df = new DecimalFormat("#.#####");
         df.setRoundingMode(RoundingMode.CEILING);
@@ -161,9 +182,38 @@ public class PanelBarcoFXMLController implements Initializable {
         
     }    
     
+    void cambiarADia() {
+        tab1.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        tab2.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        tab3.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        grid1.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        grid2.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        grid3.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
+        root.setStyle("-fx-background-color: #f7f7f7;");
+    }
+    
+    void cambiarANoche() {
+        tab1.setStyle("-fx-background-color: #293042; -fx-text-fill: f7f7f7;");
+        tab2.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
+        tab3.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
+        grid1.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
+        grid2.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
+        grid3.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
+        root.setStyle("-fx-background-color: #293042;");
+    }
+    
     void cargarFichero() throws FileNotFoundException {
         File fichero = new File("datos.NMEA");
         model.addSentenceReader(fichero);
+    }
+
+    @FXML
+    private void modoNocturno(ActionEvent event) {
+        if (!checkNocturno.isSelected()) {
+            cambiarADia();
+        } else {
+            cambiarANoche();
+        }
     }
     
 }
