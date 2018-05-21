@@ -72,6 +72,7 @@ public class PanelBarcoFXMLController implements Initializable {
     private Label labelAWS;
     @FXML
     private Label labelTEMP;
+    @FXML
     private CheckBox checkNocturno;
     @FXML
     private AnchorPane root;
