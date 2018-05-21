@@ -73,6 +73,22 @@ public class Model {
         return TWS;
     }
     
+        private final DoubleProperty AWA = new SimpleDoubleProperty();
+    public DoubleProperty AWAProperty() {
+        return AWA;
+    }
+    
+    
+    private final DoubleProperty AWS = new SimpleDoubleProperty();
+    public DoubleProperty AWSProperty() {
+        return AWS;
+    }
+    
+    private final DoubleProperty TEMP = new SimpleDoubleProperty();
+    public DoubleProperty TEMPProperty() {
+        return TEMP;
+    }
+    
     //Heading - compas magnetic
     private final DoubleProperty HDG = new SimpleDoubleProperty();
     public DoubleProperty HDGProperty() {
@@ -131,7 +147,18 @@ public class Model {
             // anadimos el codigo necesario para guardar la información de la sentence 
             TWD.set(sentence.getTrueWindDirection());
             TWS.set(sentence.getWindSpeedKnots());
-   
+            TEMP.set(sentence.getAirTemperature());
+        }
+    }
+    
+        class MWVSentenceListener
+            extends AbstractSentenceListener<MWVSentence> {
+
+        @Override
+        public void sentenceRead(MWVSentence sentence) {
+            // anadimos el codigo necesario para guardar la información de la sentence 
+            AWA.set(sentence.getAngle());
+            AWS.set(sentence.getSpeed());   
         }
     }
     
@@ -173,6 +200,9 @@ public class Model {
 
         RMCSentenceListener rmd = new RMCSentenceListener();
         reader.addSentenceListener(rmd);
+        
+        MWVSentenceListener mwv = new MWVSentenceListener();
+        reader.addSentenceListener(mwv);
         
                 
          //===============================================================

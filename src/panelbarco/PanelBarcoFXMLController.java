@@ -55,15 +55,19 @@ public class PanelBarcoFXMLController implements Initializable {
     @FXML
     private Label labelTWS;
     @FXML
-    private Label textoLatitud11;
-    @FXML
-    private Label textoLongitud11;
-    @FXML
-    private Label labelHDG_;
-    @FXML
     private Label labelSOG;
     @FXML
     private Label labelCOG;
+    @FXML
+    private Label labelTWD_;
+    @FXML
+    private Label labelTWS_;
+    @FXML
+    private Label labelAWA;
+    @FXML
+    private Label labelAWS;
+    @FXML
+    private Label labelTEMP;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,12 +101,33 @@ public class PanelBarcoFXMLController implements Initializable {
             Platform.runLater(() -> {
                 labelTWD.setText(dat);
             });
-        });
+        });        
         
         model.TWSProperty().addListener((observable, oldValue, newValue)-> {
             String dat = String.valueOf(newValue) + " Kn";
             Platform.runLater(() -> {
                 labelTWS.setText(dat);
+            });
+        });
+        
+        model.AWAProperty().addListener((observable, oldValue, newValue) -> {
+            String dat = String.valueOf(newValue) + "º";
+            Platform.runLater(() -> {
+                labelAWA.setText(dat);
+            });
+        });
+       
+        model.TEMPProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + "º";
+            Platform.runLater(() -> {
+                labelTEMP.setText(dat);
+            });
+        });        
+        
+        model.AWSProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + " Kn";
+            Platform.runLater(() -> {
+                labelAWS.setText(dat);
             });
         });
         
