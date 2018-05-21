@@ -26,6 +26,11 @@ and open the template in the editor.
 	-fx-background-color: #F7F7F7;
 }
 
-.checkbox {
+#check {
 	-fx-text-fill: #293042;
+	-fx-background-color: #F7F7F7;
+}
+
+#AnchorPane {
+	-fx-background-color: #F7F7F7;
 }
