@@ -29,6 +29,7 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -65,10 +66,6 @@ public class PanelBarcoFXMLController implements Initializable {
     @FXML
     private Label labelCOG;
     @FXML
-    private Label labelTWD_;
-    @FXML
-    private Label labelTWS_;
-    @FXML
     private Label labelAWA;
     @FXML
     private Label labelAWS;
@@ -90,6 +87,14 @@ public class PanelBarcoFXMLController implements Initializable {
     private Tab tab3;
     @FXML
     private GridPane grid3;
+    @FXML
+    private LineChart<?, ?> lnTWS;
+    @FXML
+    private LineChart<?, ?> lnTWD;
+    @FXML
+    private Slider slideTWS;
+    @FXML
+    private Slider slideTWD;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -107,6 +112,8 @@ public class PanelBarcoFXMLController implements Initializable {
             Logger.getLogger(PanelBarcoFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        // Sliders
+
         
         
         // anadimos un listener para que cuando cambie el valor en el modelo 
