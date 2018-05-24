@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.math.RoundingMode;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,11 +22,14 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -88,13 +92,20 @@ public class PanelBarcoFXMLController implements Initializable {
     @FXML
     private GridPane grid3;
     @FXML
-    private LineChart<?, ?> lnTWS;
+    private LineChart<String, Number> lnTWS;
     @FXML
-    private LineChart<?, ?> lnTWD;
+    private LineChart<String, Number> lnTWD;
     @FXML
     private Slider slideTWS;
     @FXML
     private Slider slideTWD;
+    
+    private ObservableList<Double> datosTWD = null;
+    private ObservableList<Double> datosTWS = null;
+    private Integer contadorTWD = new Integer(0);
+    private Integer contadorTWS = new Integer(0);
+    private Integer limiteTWD = new Integer(120);
+    private Integer limiteTWS = new Integer(120);
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -112,9 +123,22 @@ public class PanelBarcoFXMLController implements Initializable {
             Logger.getLogger(PanelBarcoFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        // Sliders
-
+        // lista Observable para las graficas
+        /**
+        ArrayList<Double> listaTWD = new ArrayList<Double>();
+        datosTWD = FXCollections.observableArrayList(listaTWD);
         
+        ArrayList<Double> listaTWS = new ArrayList<Double>();
+        datosTWS = FXCollections.observableArrayList(listaTWS);
+        **/
+        // Añadir los datos en la grafica
+        
+        XYChart.Series serieTWD = new XYChart.Series();
+        XYChart.Series serieTWS = new XYChart.Series();
+        lnTWS.getData().add(serieTWS);
+        lnTWS.setCreateSymbols(false);
+        lnTWD.getData().add(serieTWD);
+        lnTWD.setCreateSymbols(false);
         
         // anadimos un listener para que cuando cambie el valor en el modelo 
         //se actualice su valor en su correspondiente representacion grafica
@@ -131,6 +155,8 @@ public class PanelBarcoFXMLController implements Initializable {
             String dat = String.valueOf(newValue) + "º";
             Platform.runLater(() -> {
                 labelTWD.setText(dat);
+                serieTWD.getData().add(new XYChart.Data(contadorTWD.toString(), newValue.doubleValue()));
+                contadorTWD++;
             });
         });        
         
@@ -138,6 +164,8 @@ public class PanelBarcoFXMLController implements Initializable {
             String dat = String.valueOf(newValue) + " Kn";
             Platform.runLater(() -> {
                 labelTWS.setText(dat);
+                serieTWS.getData().add(new XYChart.Data(contadorTWS.toString(), newValue.doubleValue()));
+                contadorTWS++;
             });
         });
         
@@ -191,26 +219,6 @@ public class PanelBarcoFXMLController implements Initializable {
         
         
     }    
-    
-    void cambiarADia() {
-        tab1.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        tab2.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        tab3.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        grid1.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        grid2.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        grid3.setStyle("-fx-background-color: #f7f7f7; -fx-text-fill: #293042;");
-        root.setStyle("-fx-background-color: #f7f7f7;");
-    }
-    
-    void cambiarANoche() {
-        tab1.setStyle("-fx-background-color: #293042; -fx-text-fill: f7f7f7;");
-        tab2.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
-        tab3.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
-        grid1.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
-        grid2.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
-        grid3.setStyle("-fx-background-color: #293042; -fx-text-fill: #f7f7f7;");
-        root.setStyle("-fx-background-color: #293042;");
-    }
     
     void cargarFichero() throws FileNotFoundException {
         File fichero = new File("datos.NMEA");
