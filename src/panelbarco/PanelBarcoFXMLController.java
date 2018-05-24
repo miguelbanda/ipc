@@ -102,10 +102,12 @@ public class PanelBarcoFXMLController implements Initializable {
     
     private ObservableList<Double> datosTWD = null;
     private ObservableList<Double> datosTWS = null;
+    
     private Integer contadorTWD = new Integer(0);
     private Integer contadorTWS = new Integer(0);
-    private Integer limiteTWD = new Integer(120);
-    private Integer limiteTWS = new Integer(120);
+    
+    private Double limiteTWD = new Double(120);
+    private Double limiteTWS = new Double(120);
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -123,22 +125,31 @@ public class PanelBarcoFXMLController implements Initializable {
             Logger.getLogger(PanelBarcoFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        // lista Observable para las graficas
-        /**
-        ArrayList<Double> listaTWD = new ArrayList<Double>();
-        datosTWD = FXCollections.observableArrayList(listaTWD);
         
-        ArrayList<Double> listaTWS = new ArrayList<Double>();
-        datosTWS = FXCollections.observableArrayList(listaTWS);
-        **/
         // Añadir los datos en la grafica
         
-        XYChart.Series serieTWD = new XYChart.Series();
+
         XYChart.Series serieTWS = new XYChart.Series();
         lnTWS.getData().add(serieTWS);
         lnTWS.setCreateSymbols(false);
+        lnTWS.getXAxis().setTickLabelsVisible(false);
+        lnTWS.getXAxis().setOpacity(0);
+        
+        XYChart.Series serieTWD = new XYChart.Series();        
         lnTWD.getData().add(serieTWD);
         lnTWD.setCreateSymbols(false);
+        lnTWD.getXAxis().setTickLabelsVisible(false);
+        lnTWD.getXAxis().setOpacity(0);
+        
+        // sliders -- listener
+        
+        slideTWD.valueProperty().addListener((observable, oldVal, newVal) ->
+                { setLimiteTWD((Double)newVal); 
+        });
+        
+        slideTWS.valueProperty().addListener((observable, oldVal1, newVal1) ->
+                { setLimiteTWS((Double)newVal1); 
+        });
         
         // anadimos un listener para que cuando cambie el valor en el modelo 
         //se actualice su valor en su correspondiente representacion grafica
@@ -154,16 +165,18 @@ public class PanelBarcoFXMLController implements Initializable {
         model.TWDProperty().addListener((observable, oldValue, newValue) -> {
             String dat = String.valueOf(newValue) + "º";
             Platform.runLater(() -> {
-                labelTWD.setText(dat);
+                labelTWD.setText(dat); 
+                if(serieTWD.getData().size() > limiteTWD) { serieTWD.getData().remove(0); }
                 serieTWD.getData().add(new XYChart.Data(contadorTWD.toString(), newValue.doubleValue()));
                 contadorTWD++;
             });
         });        
-        
+       
         model.TWSProperty().addListener((observable, oldValue, newValue)-> {
             String dat = String.valueOf(newValue) + " Kn";
             Platform.runLater(() -> {
                 labelTWS.setText(dat);
+                if(serieTWS.getData().size() > limiteTWS) { serieTWS.getData().remove(0); }
                 serieTWS.getData().add(new XYChart.Data(contadorTWS.toString(), newValue.doubleValue()));
                 contadorTWS++;
             });
@@ -234,6 +247,14 @@ public class PanelBarcoFXMLController implements Initializable {
             root.getStylesheets().clear();
             root.getStylesheets().add(PanelBarco.class.getResource("noche.css").toExternalForm());
         }
+    }
+    
+    private void setLimiteTWD(Double valor) {
+        limiteTWD = valor * 60;
+    }
+    
+    private void setLimiteTWS(Double valor) {
+        limiteTWS = valor * 60;
     }
     
 }
