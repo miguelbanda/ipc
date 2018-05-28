@@ -29,6 +29,7 @@ import net.sf.marineapi.nmea.sentence.MDASentence;
 import net.sf.marineapi.nmea.sentence.MWVSentence;
 import net.sf.marineapi.nmea.sentence.RMCSentence;
 import net.sf.marineapi.nmea.sentence.XDRSentence;
+import net.sf.marineapi.nmea.util.Measurement;
 import net.sf.marineapi.nmea.util.Position;
 
 /**
@@ -115,7 +116,16 @@ public class Model {
         return SOG;
     }
     
-    //
+    // PITCH Y ROLL 
+    private final DoubleProperty PITCH = new SimpleDoubleProperty();
+    public DoubleProperty PITCHProperty() {
+        return PITCH;
+    }
+    
+    private final DoubleProperty ROLL = new SimpleDoubleProperty();
+    public DoubleProperty ROLLProperty() {
+        return ROLL;
+    }
     
     
     
@@ -161,7 +171,21 @@ public class Model {
             AWS.set(sentence.getSpeed());   
         }
     }
-    
+        
+        class XDRSentenceListener 
+                extends AbstractSentenceListener<XDRSentence> {
+            @Override
+                    public void sentenceRead(XDRSentence sentence ) {
+                        
+                        for(Measurement me : sentence.getMeasurements()) {
+                            if(me.getName().equals("PTCH")) {
+                                PITCH.set(me.getValue());
+                            } else if (me.getName().equals("ROLL")) {
+                                ROLL.set(me.getValue());
+                            }
+                        }
+                    }
+        }
     //========================================================================================
     // anade todas las clases de que extiendan AbstractSentenceListener que necesites
     class RMCSentenceListener
@@ -203,6 +227,9 @@ public class Model {
         
         MWVSentenceListener mwv = new MWVSentenceListener();
         reader.addSentenceListener(mwv);
+        
+        XDRSentenceListener xdr = new XDRSentenceListener();
+        reader.addSentenceListener(xdr);
         
                 
          //===============================================================

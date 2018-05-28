@@ -34,3 +34,7 @@ and open the template in the editor.
 #AnchorPane {
 	-fx-background-color: #F7F7F7;
 }
+
+#fondoTop {
+    -fx-background-color: #F7F7F7;
+}

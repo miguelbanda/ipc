@@ -108,6 +108,10 @@ public class PanelBarcoFXMLController implements Initializable {
     
     private Double limiteTWD = new Double(120);
     private Double limiteTWS = new Double(120);
+    @FXML
+    private Label labelPitch;
+    @FXML
+    private Label labelRoll;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -212,7 +216,21 @@ public class PanelBarcoFXMLController implements Initializable {
             });
         });
         
-        //PITCH y ROLL
+        //PITCH 
+        model.PITCHProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + "º";
+            Platform.runLater(() -> {
+                labelPitch.setText(dat);
+            });
+        });
+        
+        //ROLL
+        model.ROLLProperty().addListener((observable, oldValue, newValue)-> {
+            String dat = String.valueOf(newValue) + "º";
+            Platform.runLater(() -> {
+                labelRoll.setText(dat);
+            });
+        });
         
         //COG
         model.COGProperty().addListener((observable, oldValue, newValue)-> {
