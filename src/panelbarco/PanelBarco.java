@@ -25,6 +25,7 @@ public class PanelBarco extends Application {
         stage.setResizable(false);
         scene.getStylesheets().add(PanelBarco.class.getResource("dia.css").toExternalForm());
         stage.setScene(scene);
+        stage.setOnCloseRequest((e) -> System.exit(0));
         stage.show();
     }
 
